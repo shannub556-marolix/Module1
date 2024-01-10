@@ -4,17 +4,15 @@ from django.shortcuts import render
 from .serializer import userseralizer
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from django.http import HttpResponse,JsonResponse
-from rest_framework import status
 from rest_framework.decorators import api_view
 
-@api_view(["POST","GET"])
+@api_view(["POST"])                      #csrf token will be verification will be done here 
 def input(request):
-    if request.method=='POST':
-        username=request.POST['username']
-        password=request.POST['password']
-        email=request.POST['email']
-        user_details=User(username=username,password=password,email=email)
-        user_details.save()    
-        return Response({"Key":"valuye"},status=status.HTTP_202_ACCEPTED)
-    return JsonResponse('Succesfull',safe=False)
+    if request.method=='POST' :
+        username=request.data['username']
+        password=request.data['password']
+        email=request.data['email']
+        user_details=User.objects.create_user(username=username,password=password,email=email)  #Saving the user
+        user_details.save()
+    serilizer=userseralizer(user_details)    #converting the user details using serilizer
+    return Response(serilizer.data)          #returning the data
