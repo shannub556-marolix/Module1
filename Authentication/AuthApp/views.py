@@ -5,12 +5,14 @@ import secrets
 from .serializer import userseralizer
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes,authentication_classes
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from .serializer import ForgotPasswordSerializer
 from django.core.mail import send_mail
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import SessionAuthentication,TokenAuthentication
 
 
 @api_view(["POST"])                      #csrf token will be verification will be done here 
@@ -22,28 +24,27 @@ def input(request):
         try:
             user_details=User.objects.create_user(username=username,password=password,email=email)  #Saving the user
             user_details.save()
-            print(user_details)
-            user_data=User.objects.get(username=request.data['username'])
-            token=Token.objects.create(user_data)
-            user = User.objects.get(username=request.data['username'])
-            print(1)
-            token = Token.objects.get(user=user)
-            print(token.key)
+            token=Token.objects.create(user=user_details)
         except:
             return Response({"Message" : "username already exsists try again "})         # if username already exsists
-    serilizer=userseralizer(user_details)    #converting the user details using serilizer
-    data={'token':token_key.key, "user": serilizer.data}
-    return Response(data)          #returning the data
+        serilizer=userseralizer(user_details)    #converting the user details using serilizer
+        #data={'token':token.key, "user": serilizer.data}
+        return Response({'token':token.key, "user": serilizer.data})          #returning the data
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
+@authentication_classes([SessionAuthentication,TokenAuthentication])
 def login(request):
     if request.method=="POST":
         username=request.data['username']
         password=request.data['password']
         user_details=authenticate(username=username,password=password)     #if user is not valid it will return None
         if user_details is not None:
-            return Response({'message': 'Valid user'})
+            user_details=User.objects.get(username=username)
+            token=Token.objects.get(user=user_details)
+            serializer=userseralizer(user_details)
+            return Response({'message': 'Valid user','token':token.key,'user':serializer.data})
     return Response({'message':'Invalid User'})
 
 @api_view(["PUT"])
