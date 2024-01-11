@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AuthApp',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -78,9 +79,9 @@ WSGI_APPLICATION = 'Authentication.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mypost',
+        'NAME': 'Module_db',
         'USER': 'postgres',
-        'PASSWORD': '123456789',
+        'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '5432'
     }
