@@ -11,8 +11,9 @@ from django.contrib.auth.decorators import login_required
 from .serializer import ForgotPasswordSerializer
 from django.core.mail import send_mail
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import SessionAuthentication,TokenAuthentication
 
->>>>>>> a553b72c9a3ee0eb4bdf62ce9b8294c175306d07
 
 @api_view(["POST"])                      #csrf token will be verification will be done here 
 def input(request):
@@ -23,18 +24,12 @@ def input(request):
         try:
             user_details=User.objects.create_user(username=username,password=password,email=email)  #Saving the user
             user_details.save()
-            print(user_details)
-            user_data=User.objects.get(username=request.data['username'])
-            token=Token.objects.create(user_data)
-            user = User.objects.get(username=request.data['username'])
-            print(1)
-            token = Token.objects.get(user=user)
-            print(token.key)
+            token=Token.objects.create(user=user_details)
         except:
             return Response({"Message" : "username already exsists try again "})         # if username already exsists
-    serilizer=userseralizer(user_details)    #converting the user details using serilizer
-    data={'token':token_key.key, "user": serilizer.data}
-    return Response(data)          #returning the data
+        serilizer=userseralizer(user_details)    #converting the user details using serilizer
+        #data={'token':token.key, "user": serilizer.data}
+        return Response({'token':token.key, "user": serilizer.data})          #returning the data
 
 
 @api_view(["POST"])
@@ -75,16 +70,6 @@ def reset(request):
                 return Response({'message': "Email does not match."}, status=status.HTTP_400_BAD_REQUEST)
         except User.DoesNotExist:
             return Response({'message': "User not found."}, status=status.HTTP_404_NOT_FOUND)
-<<<<<<< HEAD
-            user_details=User.objects.get(username=username)
-            seralizer=userseralizer(user_details)
-            if email==seralizer.data['email']:
-                updateduser_details,value=User.objects.update_or_create(username=username,email=email,defaults={"password":New_password})    #inbulit method to update password 
-                return Response({'message': f"{updateduser_details} user password reset reset succesful with ({New_password}) "})            # click here to know about syntax  https://stackoverflow.com/questions/16329946/django-model-method-create-or-update
-        except:
-            return Response({'message':"user not found "})
-=======
->>>>>>> a553b72c9a3ee0eb4bdf62ce9b8294c175306d07
     return Response(status=status.HTTP_200_OK)
 
 
