@@ -13,6 +13,7 @@ from django.core.mail import send_mail
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication,TokenAuthentication
+from django.contrib.auth.hashers import check_password
 
 
 @api_view(["POST"])                      #csrf token will be verification will be done here 
@@ -78,49 +79,46 @@ def reset(request):
 @api_view(["PUT"])
 def change_password(request):
     if request.method == "PUT":
-        current_password = request.data.get('current_password')
-        new_password = request.data.get('newpassword')
+        current_password = request.data['current_password']
+        new_password = request.data['new_password']
+        username = request.data['username']
         
-        if not all([current_password, new_password]):
+        if not all([current_password, new_password,username]):
             return Response({'message': "Both current and new passwords are required."}, status=status.HTTP_400_BAD_REQUEST)
-
-        user = request.user
-
-        if user.check_password(current_password):
-            if current_password == new_password:
-                return Response({'message':"new password must be different from old password"},status=status.HTTP_400_BAD_REQUEST)
-            user.set_password(new_password)
-            user.save()
-            return Response({'message': "Password changed successfully"})
-        else:
-            return Response({'message': "Current password is incorrect."}, status=status.HTTP_400_BAD_REQUEST)
-
+        try:
+            user_details = User.objects.get(username=username)
+            if check_password(current_password,user_details.password):
+                user, created = User.objects.update_or_create(username=username, defaults={'password': new_password})
+                return Response({'message': "Password changed successfully"})
+            return Response({"message": "current password is incorrect"})
+        except:
+            return Response({'message': "User with that details not found."}, status=status.HTTP_400_BAD_REQUEST)
     return Response(status=status.HTTP_200_OK)
 
-@api_view(["POST"])
-def forgot_password(request):
-    if request.method == "POST":
-        serializer = ForgotPasswordSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+# @api_view(["POST"])
+# def forgot_password(request):
+#     if request.method == "POST":
+#         serializer = ForgotPasswordSerializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
 
-        email = serializer.validated_data['email']
+#         email = serializer.validated_data['email']
         
-        # Fetch the user associated with the email
-        try:
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
-            return Response({'message': "No user found with the provided email."}, status=status.HTTP_404_NOT_FOUND)
+#         # Fetch the user associated with the email
+#         try:
+#             user = User.objects.get(email=email)
+#         except User.DoesNotExist:
+#             return Response({'message': "No user found with the provided email."}, status=status.HTTP_404_NOT_FOUND)
         
-        # Generate a unique reset token
-        reset_token = secrets.token_hex(16)
+#         # Generate a unique reset token
+#         reset_token = secrets.token_hex(16)
 
-        # Generate and send a reset link/token to the user's email
-        # Note: You'd typically create a token or a reset link and include it in the email.
-        # For demonstration purposes, here's a simple email sending code:
-        reset_link = f"http://yourdomain.com/reset_password/{reset_token}/"
+#         # Generate and send a reset link/token to the user's email
+#         # Note: You'd typically create a token or a reset link and include it in the email.
+#         # For demonstration purposes, here's a simple email sending code:
+#         reset_link = f"http://yourdomain.com/reset_password/{reset_token}/"
 
-        send_mail('Password Reset',f'Please click on the following link to reset your password: {reset_link}',
-              'from@example.com',[user.email],fail_silently=False,
-              )
+#         send_mail('Password Reset',f'Please click on the following link to reset your password: {reset_link}',
+#               'from@example.com',[user.email],fail_silently=False,
+#               )
 
-        return Response({'message': "Password reset email sent."}, status=status.HTTP_200_OK)
+#         return Response({'message': "Password reset email sent."}, status=status.HTTP_200_OK)
