@@ -46,7 +46,7 @@ def login(request):
 def reset(request):
     if request.method == "PUT":
         username = request.data.get('username')
-        new_password = request.data.get('password')
+        new_password = request.data.get('password')  
         email = request.data.get('email')
         if not all([username, new_password, email]):
             return Response({'message': "All fields are required."}, status=status.HTTP_400_BAD_REQUEST)
@@ -54,8 +54,11 @@ def reset(request):
             user_details = User.objects.get(username=username)
             serializer = userseralizer(user_details)
             if email == serializer.data['email']:
-                user, created = User.objects.update_or_create(username=username, defaults={'password': new_password, 'email': email})          # Using update_or_create 
-                return Response({'message': "User updated"})                                                                                   # If you want to save after updating, which is not necessary here since the above method saves automatically.
+                #user, created = User.objects.update_or_create(username=username, email=email,defaults={'password': new_password})          # this method will automatically replace and save paticular feild , but it won't encript password
+                user=User.objects.get(username=username)
+                user.set_password(new_password)                                                    #set_password is inbulit method which will encrpt new password 
+                user.save()                                                                        #it will save encrypted password
+                return Response({'message': "User updated"})                                                                                   
             else:
                 return Response({'message': "Email does not match."}, status=status.HTTP_400_BAD_REQUEST)
         except User.DoesNotExist:
@@ -76,7 +79,10 @@ def change_password(request):
         try:
             user_details = User.objects.get(username=username)
             if check_password(current_password,user_details.password):
-                user, created = User.objects.update_or_create(username=username, defaults={'password': new_password})
+                #user, created = User.objects.update_or_create(username=username, defaults={'password': new_password})                  # this method will automatically replace and save paticular feild , but it won't encript password
+                user=User.objects.get(username=username)
+                user.set_password(new_password)                                    #set_password is inbulit method which will encrpt new password 
+                user.save()                                                        #it will save encrypted password
                 return Response({'message': "Password changed successfully"})
             return Response({"message": "current password is incorrect"})
         except:
