@@ -24,4 +24,6 @@ urlpatterns = [
     path('reset/',views.reset,name='reset'),
     path('change-password/', views.change_password, name='change_password'),
     #path('forgot_password/',views.forgot_password,name='forgot_password'),
+    path('visitors/',views.visitors,name='visitors'),
+    path('logout/',views.logout,name='logout'),
 ]
