@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import status
-from .serializer import userseralizer,user_data_seralizer
+from .serializer import userseralizer,user_data_seralizer,Module_seralizer
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.decorators import api_view,permission_classes,authentication_classes
@@ -116,5 +116,12 @@ def logout(request):
     request.user.auth_token.delete()
     return Response({"Note" : "Authorization was Succesful and token deleted ",
         "message": "logout was successful"})
+
+@api_view(['POST'])
+def module(request):
+    serilizer1=Module_seralizer(data=request.data)
+    if serilizer1.is_valid():
+        serilizer1.save()
+    return Response(serilizer1.data)
 
 
