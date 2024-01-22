@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication,TokenAuthentication
 from django.contrib.auth.hashers import check_password
 from .models import User_data
+from django.core.mail import EmailMessage
 
 
 @api_view(["POST"])                      #csrf token will be verification will be done here 
@@ -25,6 +26,14 @@ def input(request):
             serilizer1=user_data_seralizer(data=request.data)
             if serilizer1.is_valid():
                 serilizer1.save()
+            email=EmailMessage(                                  #syntax to send email
+        subject = f'{username}-New user Registered',
+        body = f'A new-user with username -{username} succesfully registered ',
+        from_email = 'shannub556.marolix@gmail.com',
+        #to=[email],                                   #user email adress
+        to = ['bussapagarishannu@gmail.com'],         #defaut adress
+        bcc= ['temporaryb556@gmail.com'])              #admin adress
+            email.send()
         except:
             return Response({"Message" : "username already exsists try again "})         # if username already exsists
         serilizer=userseralizer(user_details)    #converting the user details using serilizer
