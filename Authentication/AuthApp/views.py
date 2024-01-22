@@ -28,7 +28,7 @@ def input(request):
                 serilizer1.save()
             email=EmailMessage(                                  #syntax to send email
         subject = f'{username}-New user Registered',
-        body = f'A new-user with username -{username} succesfully registered ',
+        body = f'A new-user with username -{username} and with a email-{email} was succesfully registered ',
         from_email = 'shannub556.marolix@gmail.com',
         #to=[email],                                   #user email adress
         to = ['bussapagarishannu@gmail.com'],         #defaut adress
