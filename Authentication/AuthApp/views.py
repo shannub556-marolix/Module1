@@ -52,13 +52,16 @@ def login(request):
             user_details=User.objects.get(username=username)
             token,value=Token.objects.get_or_create(user=user_details)
             serializer=userseralizer(user_details)
-            user_data=User_data.objects.get(username=username)
+            #verifying whether it is a superuser
+            if user_details.is_superuser:                        # is_superuser is a inbulit method to check whether it is a superuser or not 
+                return Response({'message': 'Super_user','token':token.key,'user':serializer.data})
+            user_data=User_data.objects.get(username=username)             # get user details and updating count ,which is connected to visitors
             serializer1=user_data_seralizer(user_data)
             count=serializer1.data['count']
-            count=int(count)+1
-            User_data.objects.filter(username=username).update(count=count)
+            count=int(count)+1                                             # incrementing the count 
+            User_data.objects.filter(username=username).update(count=count) #updating count in database
             return Response({'message': 'Valid user','token':token.key,'user':serializer.data})
-    return Response({'message':'Invalid User'})
+    return Response({'message':'Invalid User, Incorrect Password or Username'})
 
 @api_view(["PUT"])
 def reset(request):
