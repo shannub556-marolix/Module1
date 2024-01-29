@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import status
-from .serializer import userseralizer,user_data_seralizer,Module_seralizer
+from .serializer import userseralizer,user_data_seralizer,Module_seralizer#Productserializer
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.decorators import api_view,permission_classes,authentication_classes
@@ -29,9 +29,9 @@ def input(request):
             email=EmailMessage(                                  #syntax to send email
         subject = f'{username}-New user Registered',
         body = f'A new-user with username -{username} and with a email-{email} was succesfully registered ',
-        from_email = 'shannub556.marolix@gmail.com',
-        #to=[email],                                   #user email adress
-        to = ['bussapagarishannu@gmail.com'],         #defaut adress
+        from_email = 'shannub556.marolix@gmail.com',    #default address(domain)
+        #to=[email],                                   #user email adress(input email from user)
+        to = ['bussapagarishannu@gmail.com'],           #user email adress(Demo mail)
         bcc= ['temporaryb556@gmail.com'])              #admin adress
             email.send()
         except:
@@ -126,11 +126,12 @@ def logout(request):
     return Response({"Note" : "Authorization was Succesful and token deleted ",
         "message": "logout was successful"})
 
-@api_view(['POST'])
+@api_view(['POST',"GET"])
 def module(request):
     serilizer1=Module_seralizer(data=request.data)
     if serilizer1.is_valid():
         serilizer1.save()
     return Response(serilizer1.data)
+
 
 

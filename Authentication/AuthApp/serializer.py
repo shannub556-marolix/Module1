@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import User_data,Module
+from .models import User_data,Module#Product
 
 class userseralizer(serializers.ModelSerializer):
     class Meta:
@@ -18,3 +18,4 @@ class Module_seralizer(serializers.ModelSerializer):
     class Meta:
         model=Module
         fields='__all__'
+
