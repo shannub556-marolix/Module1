@@ -25,5 +25,5 @@ urlpatterns = [
     path('change-password/', views.change_password, name='change_password'),
     path('visitors/',views.visitors,name='visitors'),
     path('logout/',views.logout,name='logout'),
-    path('module',views.module),
+    #path('module',views.module),
 ]

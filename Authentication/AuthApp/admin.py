@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Module,User_data
+from .models import User_data #Module
 
 class Useradmin(admin.ModelAdmin):
     list_display=['username','email','count']
 
 admin.site.register(User_data,Useradmin)
-admin.site.register(Module)
+# admin.site.register(Module)
