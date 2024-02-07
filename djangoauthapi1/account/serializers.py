@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from account.models import User
+from account.models import User,SoldProducts
 from django.utils.encoding import smart_str, force_bytes, DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -37,6 +37,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
     fields = ['id', 'email', 'name']
+
+class SoldProductsSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = SoldProducts
+    fields = ['product_code','email', 'name','mobile','product_name','product_expiry','product_mfd','product_waranty','product_category']
 
 class UserChangePasswordSerializer(serializers.Serializer):
   password = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)

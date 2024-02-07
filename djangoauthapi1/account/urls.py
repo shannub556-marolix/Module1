@@ -1,6 +1,6 @@
 
 from django.urls import path
-from account.views import  UserPasswordResetView,UserLoginView, UserProfileView, UserRegistrationView, UserChangePasswordView,SendPasswordResetEmailView,CreateSuperUser
+from account.views import  UserPasswordResetView,UserLoginView, UserProfileView, UserRegistrationView, UserChangePasswordView,SendPasswordResetEmailView,CreateSuperUser,SoldProducts_details,AllSoldProducts
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('register/', UserRegistrationView.as_view(), name='register'),
@@ -10,6 +10,8 @@ urlpatterns = [
     path('sendresetpasswordemail/', SendPasswordResetEmailView.as_view(), name='send-reset-password-email'),
     path('reset-password/<uid>/<token>/', UserPasswordResetView.as_view(), name='reset-password'),
     path('create-superuser',CreateSuperUser.as_view(),name='create-superuser'),
+    path('sold-products',SoldProducts_details.as_view(),name='Sold-Products'),
+    path('allsold-products',AllSoldProducts.as_view(),name='AllSold-Products'),
 
     # path('passwordchange/',auth_views.PasswordChangeView.as_view(),name='passwordchange'),
     # path('password-change-done/', auth_views.PasswordChangeDoneView.as_view(),name='passwordresetchange'),
