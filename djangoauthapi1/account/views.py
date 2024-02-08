@@ -8,6 +8,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from .models import User,SoldProduct
 import datetime
+from .Sms import Message
+from .utils import Util
 
 # Generate Token Manually
 def get_tokens_for_user(user):
@@ -90,7 +92,19 @@ class SoldProducts_details(APIView):
     details.save()
     product_data=SoldProduct.objects.get(product_code=product_code)
     serializer=SoldProductsSerializer(product_data)
-    return Response(serializer.data,status=status.HTTP_200_OK)
+    body_text=f" Hello {name}, you have Succesfully Purchased {product_name} on {Date}, Thank you and Visit Again"
+    try:
+      Message.send(mobile=mobile,body_text=body_text)
+      message={'message':"A Invoice has been sent succesfully to register mobile and email ","Product_details":serializer.data}
+    except:
+      message={'message':"please use verified mobile(9550685733) number only ","Product_details":serializer.data}
+    data = {
+        'subject':f'Thank for Purchasing {product_name}',
+        'body':body_text,
+        'to_email':email
+      }
+    Util.send_email(data)
+    return Response(message,status=status.HTTP_200_OK)
   
   renderer_classes = [UserRenderer]
   permission_classes = [IsAuthenticated]
