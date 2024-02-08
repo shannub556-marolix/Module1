@@ -77,7 +77,7 @@ class User(AbstractBaseUser):
       return self.is_admin
 
 
-class SoldProducts(models.Model):
+class SoldProduct(models.Model):
     product_code=models.IntegerField(primary_key=True)
     email=models.CharField(max_length=200)
     name=models.CharField(max_length=200)
@@ -87,6 +87,7 @@ class SoldProducts(models.Model):
     product_mfd=models.CharField(max_length=200)
     product_waranty=models.CharField(max_length=200)
     product_category=models.CharField(max_length=200)
+    date=models.CharField(max_length=300)
 
 
 

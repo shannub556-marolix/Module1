@@ -6,7 +6,8 @@ from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
-from .models import User,SoldProducts
+from .models import User,SoldProduct
+import datetime
 
 # Generate Token Manually
 def get_tokens_for_user(user):
@@ -84,35 +85,48 @@ class SoldProducts_details(APIView):
     product_mfd=request.data['product_mfd']
     product_waranty=request.data['product_waranty']
     product_category=request.data['product_category']
-    details=SoldProducts(name=name,email=email,mobile=mobile,product_code=product_code,product_name=product_name,product_expiry=product_expiry,product_mfd=product_mfd,product_waranty=product_waranty,product_category=product_category)
+    Date=datetime.datetime.now()
+    details=SoldProduct(name=name,email=email,mobile=mobile,product_code=product_code,product_name=product_name,product_expiry=product_expiry,product_mfd=product_mfd,product_waranty=product_waranty,product_category=product_category,date=Date)
     details.save()
-    product_data=SoldProducts.objects.get(product_code=product_code)
+    product_data=SoldProduct.objects.get(product_code=product_code)
     serializer=SoldProductsSerializer(product_data)
     return Response(serializer.data,status=status.HTTP_200_OK)
   
   renderer_classes = [UserRenderer]
   permission_classes = [IsAuthenticated]
-  def get(self, request, format=None):
+  def get(self, request, format=None):                    #Getting all products According to that user
     serializer = UserProfileSerializer(request.user)
     email=serializer.data['email']
-    details=SoldProducts.objects.filter(email=email)
+    details=SoldProduct.objects.filter(email=email)
     serializer=SoldProductsSerializer(details,many=True)
     return Response(serializer.data,status=status.HTTP_200_OK)
+  
   
 
 class AllSoldProducts(APIView):
   renderer_classes = [UserRenderer]
   permission_classes = [IsAuthenticated]
-  def get(self, request, format=None):
+  def get(self, request, format=None):                  #Getting all sold products details if he is superuser
     serializer = UserProfileSerializer(request.user)
     email=serializer.data['email']
     user=User.objects.get(email=email)
     if user.is_admin:
-      details=SoldProducts.objects.all()
+      details=SoldProduct.objects.all()
       serializer=SoldProductsSerializer(details,many=True)
       return Response(serializer.data,status=status.HTTP_200_OK)
     return Response('Unauthorized user',status=status.HTTP_202_ACCEPTED)
-
+  
+  renderer_classes = [UserRenderer]
+  permission_classes = [IsAuthenticated]
+  def delete(self, request, format=None):                   #incase any product is returned or exchanged
+    serializer = UserProfileSerializer(request.user)
+    email=serializer.data['email']
+    user=User.objects.get(email=email)
+    if user.is_admin:
+      product_code=request.data['product_code']
+      SoldProduct.objects.get(product_code=product_code).delete()
+      return Response('Product has been Removed Succesfully',status=status.HTTP_200_OK)
+    return Response('Unauthorized user',status=status.HTTP_202_ACCEPTED)
 
     
 
