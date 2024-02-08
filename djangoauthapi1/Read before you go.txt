@@ -1,0 +1,8 @@
+After downloading project
+to send sms , go to sms.py file in account folder and remove # in authtoken 
+after removing it will work only for mobile no 9550685733 because it is only registered 
+
+
+if you want to register your number go to : https://www.youtube.com/watch?v=KYQ3u3xDPRA&ab_channel=Pyplane
+get a free taril and also install twilio by using this below command
+python -m pip install django-twilio
