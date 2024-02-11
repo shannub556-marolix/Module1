@@ -3,7 +3,7 @@ from django.contrib.auth.models import BaseUserManager,AbstractBaseUser
 
 #  Custom User Manager
 class UserManager(BaseUserManager):
-  def create_user(self, email, name, tc, password=None, password2=None):
+  def create_user(self, email, name, tc, password=None, password2=None,otp='0'):
       """
       Creates and saves a User with the given email, name, tc and password.
       """
@@ -15,13 +15,14 @@ class UserManager(BaseUserManager):
           email=self.normalize_email(email),
           name=name,
           tc=tc,
+          otp=otp,
       )
 
       user.set_password(password)
       user.save(using=self._db)
       return user
 
-  def create_superuser(self, email, name, tc, password=None):
+  def create_superuser(self, email, name, tc, password=None,otp='0'):
       """
       Creates and saves a superuser with the given email, name, tc and password.
       """
@@ -31,6 +32,7 @@ class UserManager(BaseUserManager):
           password=password,
           name=name,
           tc=tc,
+          otp=otp,
       )
       user.is_admin = True
       user.save(using=self._db)
@@ -49,6 +51,7 @@ class User(AbstractBaseUser):
   is_admin = models.BooleanField(default=False)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
+  otp=models.CharField(max_length=200)
   print("02")
 
   objects = UserManager()
@@ -77,8 +80,9 @@ class User(AbstractBaseUser):
       return self.is_admin
 
 
-class SoldProduct(models.Model):
+class SoldProducts(models.Model):
     product_code=models.IntegerField(primary_key=True)
+    price=models.CharField(max_length=200)
     email=models.CharField(max_length=200)
     name=models.CharField(max_length=200)
     mobile=models.CharField(max_length=200)

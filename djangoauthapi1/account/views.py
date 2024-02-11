@@ -1,15 +1,16 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from account.serializers import SendPasswordResetEmailSerializer, UserChangePasswordSerializer, UserLoginSerializer, UserPasswordResetSerializer, UserProfileSerializer, UserRegistrationSerializer, SoldProductsSerializer
+from account.serializers import SendPasswordResetEmailSerializer, UserChangePasswordSerializer, UserLoginSerializer, UserPasswordResetSerializer, UserProfileSerializer, UserRegistrationSerializer, SoldProductsSerializer, VerifyotpSerializer,SetpasswordSerializer,ResetpasswordSerializer
 from django.contrib.auth import authenticate
 from account.renderers import UserRenderer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
-from .models import User,SoldProduct
+from .models import User,SoldProducts as SoldProduct
 import datetime
 from .Sms import Message
 from .utils import Util
+from random import randint
 
 # Generate Token Manually
 def get_tokens_for_user(user):
@@ -166,4 +167,28 @@ class UserPasswordResetView(APIView):
     serializer.is_valid(raise_exception=True)
     return Response({'msg':'Password Reset Successfully'}, status=status.HTTP_200_OK)
   
+''' ->In this Resetpassword i'll be generating link along with otp and i'll be sending both otp, link to user registered mail adress
+    ->In Verifyotp i'll be verifying the url if that url is valid then i'll validate otp and then i'll be generating link for setpassword
+    ->In Setpassword i'll be verifying url , if that url is valid then i'll update password  
+'''
+class Resetpassword(APIView):
+  renderer_classes = [UserRenderer]
+  def post(self, request, format=None):
+    serializer = ResetpasswordSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+    return Response({'msg':'Password Reset link send. Please check your Email'}, status=status.HTTP_200_OK)
 
+class Verifyotp(APIView):
+  renderer_classes = [UserRenderer]
+  def post(self, request, uid, token, format=None):
+    serializer = VerifyotpSerializer(data=request.data, context={'uid':uid, 'token':token})
+    serializer.is_valid(raise_exception=True)
+    return Response({'msg':'Otp Succesfully verfied . Please check terminal for reset link'}, status=status.HTTP_200_OK)
+  
+
+class Setpassword(APIView):
+  renderer_classes = [UserRenderer]
+  def post(self, request, uid, token, format=None):
+    serializer = SetpasswordSerializer(data=request.data, context={'uid':uid, 'token':token})
+    serializer.is_valid(raise_exception=True)
+    return Response({'msg':'password succesfully changed'}, status=status.HTTP_200_OK)
