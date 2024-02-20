@@ -7,6 +7,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from account.utils import Util
 from random import randint
 from .models import User
+from datetime import timedelta,datetime
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
   # We are writing this becoz we need confirm password field in our Registration Request
@@ -94,7 +95,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
 class OtpSeralizer(serializers.ModelSerializer):
   class Meta:
     model=User
-    fields=['otp']
+    fields=['otp','updated_at']
 
 class UserPasswordResetSerializer(serializers.Serializer):
   password = serializers.CharField(max_length=255, style={'input_type':'password'}, write_only=True)
@@ -145,6 +146,7 @@ class ResetpasswordSerializer(serializers.Serializer):
       print('Password Reset Link', link)
       otp=randint(1000,9999)
       User.objects.filter(email=email).update(otp=otp)
+      User.objects.filter(email=email).update(updated_at=datetime.now())
       # Send EMail
       body = 'Click Following Link to Reset Your Password '+link+f' and otp to reset your password is {otp}'
       data = {
@@ -153,7 +155,6 @@ class ResetpasswordSerializer(serializers.Serializer):
         'to_email':user.email
       }
       Util.send_email(data)
-      attrs['link']=body
       return attrs
     else:
       raise serializers.ValidationError('You are not a Registered User')
@@ -172,8 +173,16 @@ class VerifyotpSerializer(serializers.Serializer):
       id = smart_str(urlsafe_base64_decode(uid))
       user = User.objects.get(id=id)
       serializer=OtpSeralizer(user)
+      time=serializer.data['updated_at']
+      time=time.split('.')
+      time.pop(-1)
+      time=('').join(time)
+      time=datetime.strptime(time, "%Y-%m-%d %H:%M:%S")
+      max_time=time+timedelta(minutes=1)
       if not PasswordResetTokenGenerator().check_token(user, token):
         raise serializers.ValidationError('Token is not Valid or Expired')
+      if datetime.now() >= max_time:
+        raise serializers.ValidationError("otp expired please try again")
       if otp!=serializer.data['otp']:
         raise serializers.ValidationError("Wrong otp please try again")
       uid = urlsafe_base64_encode(force_bytes(user.id))

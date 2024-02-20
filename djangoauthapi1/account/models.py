@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager,AbstractBaseUser
+from datetime import datetime
 
 #  Custom User Manager
 class UserManager(BaseUserManager):
@@ -50,7 +51,7 @@ class User(AbstractBaseUser):
   is_active = models.BooleanField(default=True)
   is_admin = models.BooleanField(default=False)
   created_at = models.DateTimeField(auto_now_add=True)
-  updated_at = models.DateTimeField(auto_now=True)
+  updated_at = models.CharField(max_length=200,default=datetime.now())
   otp=models.CharField(max_length=200)
   print("02")
 

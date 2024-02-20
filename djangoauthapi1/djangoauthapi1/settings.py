@@ -155,8 +155,8 @@ AUTH_USER_MODEL = 'account.User'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'bajajstoresindia@gmail.com'
-EMAIL_HOST_PASSWORD = 'rpkpqpwrzqwgecqb'       #change your smtp configuration
+EMAIL_HOST_USER = 'temporaryb556@gmail.com'
+EMAIL_HOST_PASSWORD = 'unsbvjymrgmqfxky'       #change your smtp configuration
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
