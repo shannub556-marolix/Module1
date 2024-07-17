@@ -1,0 +1,146 @@
+
+.main{
+    padding-left: 500px;
+}
+
+.carousel-item{
+    height: 700px;
+}
+.active{
+    background-size: 1600px;
+}
+.button{
+    height: 50px;
+    width: 100px;
+    color:blue;
+    font-size: 25px;
+    background: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    
+}
+.d-flex{
+    width: 500px    ;
+}
+
+/* .nav1{
+    padding-left: 600px;
+} */
+.Beauty{
+    font-size: 50px;
+}
+
+.div1{
+   
+    height: 400px;
+    width: 550px;
+    margin-top: 100px;
+    margin-left: 150px;
+    background-size: 600px;
+    border-radius: 10px;
+    transition: all 1s;
+   
+}
+.div1:hover{
+    box-shadow: 0px 0px 10px red;
+    transform: scale(1.1);
+    cursor: pointer;
+  
+}
+.div3{
+    margin-top: -750px;
+    margin-left: 800px;
+   
+    height: 700px;
+    width: 600px;
+    border-radius: 10px;
+    background-size: 600px;
+    transition: all 1s;
+   
+}
+.div2{
+    height: 400px;
+    width: 550px;
+   
+    margin-left: 150px;
+    margin-top: 40px;
+    border-radius: 10px;
+    background-size: 600px;
+    transition: all 1s;
+
+}
+.div2:hover{
+    box-shadow: 0px 0px 10px green;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.div3:hover{
+    box-shadow: 0px 0px 10px red;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.ih{
+    color: black;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.td{
+    text-decoration: none;
+}
+.cart{
+    padding-left: 150px;
+    padding-right: 150px;
+    display: flex;
+    justify-content: space-between;
+    /* box-shadow: 0px 0px 10px; */
+}
+.card{
+    box-shadow: 0px 0px 4px;
+}
+.card:hover{
+    cursor: pointer;
+    
+}
+
+.card-img-top{
+    height: 500px;
+   width: 100%;
+}
+.container-fluid{
+    padding-left: 500px;
+}
+#search{
+    text-align: center;
+    box-shadow: 0px 0px 10px grey;
+}
+.search{
+    box-shadow: 0px 0px 10px grey;
+}
+
+.fs{
+   padding-left: 600px;
+}
+.fitp{
+    height: 70px;
+    padding-top: 30px;
+   padding-left: 250px;
+}
+#foot2{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 30px;
+}
+#copy{
+    padding-left: 600px;
+    padding-top: 30px;
+}
+
+#ps{
+    padding-right: 150px;
+    padding-left: 150px;
+    text-align: center;
+    box-shadow: 0px 0px 10px grey;
+    cursor: pointer;
+   
+}
+

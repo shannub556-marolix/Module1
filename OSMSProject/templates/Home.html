@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>USER MANAGEMENT SYSTEM</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<!-- <div class="w3-top" style="position: fixed; width: 100%; z-index: 1000;"> -->
+<div class="w3-top" style="position: fixed; width: 100%; z-index: 1000;">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="http://127.0.0.1:8000/registration/" target="_blank" class="w3-bar-item w3-button">Go to Project</a>
+    <!-- <a href="#home" class="w3-bar-item w3-button">Home</a> -->
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <!-- <a href="http://127.0.0.1:8000/registration/" target="_blank" class="w3-bar-item w3-button">Go to Project</a> -->
+      <a href="#home" class="w3-bar-item w3-button">Home</a>
+      <a href="https://www.linkedin.com/in/busappagari-shanmukha-33bb77192/" target="_blank" class="w3-bar-item w3-button">Linkedin</a>
+      <a href="https://github.com/shannub556-marolix/" target="_blank" class="w3-bar-item w3-button">Github</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+  <img class="w3-image" src="https://swoopnow.com/wp-content/uploads/2020/07/User-Authentication_-Understanding-the-Basics-Top-Tips.jpg" alt="Hamburger Catering" width="1600" height="800">
+  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+    <h1 class="w3-xxlarge">Welcome To My Project</h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="https://static.vecteezy.com/system/resources/previews/004/438/175/original/user-authentication-authorization-concept-icon-software-development-kit-idea-thin-line-illustration-data-encryption-privacy-protection-application-management-isolated-outline-drawing-vector.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center">Project Summary</h1><br>
+      <h5 class="w3-center">User Authentication and Profile Management System</h5>
+      <p class="w3-large">This project showcases my expertise in Django, Django REST Framework, and security practices for user authentication and data protection. It provides a solid foundation for user-centric applications, emphasizing <span class="w3-tag w3-light-grey">reliability and</span>  security.</p>
+      <p class="w3-large w3-text-grey w3-hide-medium">I have developed a robust User Authentication and Profile Management system using Django and Django REST Framework. This project incorporates key features for secure user registration, login, and profile retrieval. The implementation leverages JSON Web Tokens (JWT) for token-based authentication, ensuring a secure and reliable user experience.</p>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <!-- Menu Section -->
+  <div class="w3-row w3-padding-64" id="menu">
+    <div class="w3-col l6 w3-padding-large">
+      <h1 class="w3-center">Functionalities</h1><br>
+      <h4>User Registration</h4>
+      <p class="w3-text-grey">Users can register with the system by providing their email, name, password, and confirming the password.</p><br>
+    
+      <h4>User Login</h4>
+      <p class="w3-text-grey">Registered users can log in by providing their email and password.</p><br>
+    
+      <h4>Profile Management</h4>
+      <p class="w3-text-grey">Authenticated users can view their profile information, including their unique identifier (ID), email, and name.</p><br>
+    
+      <h4>User Logout</h4>
+      <p class="w3-text-grey">Logging out blacklists the refresh token, ensuring that it cannot be used for future authentication.</p><br>
+    
+      <h4>OTP-Based Authentication For Resetting Password</h4>
+      <p class="w3-text-grey">OTPs are sent to users' email addresses for verification during login or specific operations and The system facilitates the secure resetting of passwords by verifying the user's email and ensuring password strength.</p>    
+    </div>
+    
+    <div class="w3-col l6 w3-padding-large">
+      <img src="https://images.pexels.com/photos/3194519/pexels-photo-3194519.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-64" id="contact">
+    <h1>Contact</h1><br>
+    <p>Python Developer | Web App and Backend Specialist | Skilled in Django, REST APIs, and Postgres.</p>
+    <p class="w3-text-blue-grey w3-large"><b>Banglore, Karnataka, India</b></p>
+    <p>You can also contact us by phone 9550685733 or email bussapagarishannu@gmail.com, or you can send us a message here:</p>
+    <form action="mailto:bussapagarishannu@gmail.com" method="post" enctype="text/plain">
+        <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+        <p><input class="w3-input w3-padding-16" type="number" placeholder="Mobile Number" required name="People"></p>
+        <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+        <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
+    </form>
+    
+  </div>
+  
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-32">
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+</body>
+</html>

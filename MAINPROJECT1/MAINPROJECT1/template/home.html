@@ -1,0 +1,203 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <style>
+      /* .sravan{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+      } */
+      #skr{
+        padding-left: 400px;
+        font-size: 100px;
+        margin-top: -150px; 
+      }
+      .d-inline-block{
+        padding-left: 50px;
+      }
+    </style>
+</head>
+<body>
+    <marquee behavior="" direction="left" Scrollamount="20">
+      <div class="sravan">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+               <img src="https://as2.ftcdn.net/v2/jpg/04/47/30/89/1000_F_447308993_j0GKjpTq7fle7wwNmcuxotw9WVkqMaVi.jpg" alt="Logo" width="300" height="150" class="d-inline-block align-text-top">
+               <h1 id="skr">SKR Fashions</h1>
+              </a>
+            </div>
+        </nav>
+      </div>
+    </marquee>
+    <br>
+    <br>
+
+  
+  <div class="main">
+   <button class="button"><a href="" class="btn ">Home</a></button>
+   <button class="button"><a href="{% url 'myapp:product_list' %}" class="btn">Shop</a></button>
+   <button class="button"><a href="{% url 'myapp:about' %}" class="btn">About</a></button>
+   <button class="button"><a href="{% url 'myapp:view_cart' %}" class="btn">Cart</a></button>
+   <button class="button"><a href="{% url 'myapp:blog' %}" class="btn">Blog</a></button>
+  </div>
+ 
+ <br>
+ 
+ <div>
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="background-image: url('{% static 'myapp/images/slider-3.jpg'%}');">
+            <!-- <img src="https://images.pexels.com/photos/1884581/pexels-photo-1884581.jpeg?auto=compress&cs=tinysrgb&w=600" class="d-block w-100" alt="..."> -->
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="Beauty">The Beauty of Nature is Hidden</h5>
+              <a href=""><button class="button">shop</button></a>
+            </div>
+          </div>
+          <div class="carousel-item active" style="background-image: url('{% static 'myapp/images/sunil.jpeg' %}');">
+            <!-- <img src="https://images.pexels.com/photos/1200637/pexels-photo-1200637.jpeg?auto=compress&cs=tinysrgb&w=600" class="d-block w-100" alt="..."> -->
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="Beauty">The Beauty of Nature is Hidden</h5>
+              <a href=""><button class="button">shop</button></a>
+            </div>
+          </div>
+          <div class="carousel-item active" style="background-image: url('{% static 'myapp/images/vamshi.jpeg'%}');">
+            <!-- <img src="https://images.unsplash.com/photo-1627292441194-0280c19e74e4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="..."> -->
+            <div class="carousel-caption d-none d-md-block">
+              <h5 class="Beauty">The Beauty of Nature is Hidden</h5>
+              
+             
+            </div>
+          </div>
+        </div>
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+ </div>
+ <br><br>
+        
+        <div class="cart">
+          <marquee behavior="" direction="right" Scrollamount="20">
+          <div class="card" style="width: 18rem;">
+              <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/x/l/d/s-st28-vebnor-original-imagq6aqgh2hzv22.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+              
+          </div>
+          </marquee>
+          <marquee behavior="" direction="right" Scrollamount="20">
+          <div class="card" style="width: 18rem;">
+              <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/x/u/h/m-st2-vebnor-original-imagpw7w3ha4tv2h.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+              
+          </div>
+          </marquee>
+          <marquee behavior="" direction="right" Scrollamount="20">
+          <div class="card" style="width: 18rem;">
+              <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/x/f/n/-original-imagy3k8ddhgyuzk.jpeg?q=70" class="card-img-top" alt="...">
+              
+          </div>
+          </marquee>
+          <marquee behavior="" direction="right" Scrollamount="20">
+          <div class="card" style="width: 18rem;">
+              <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/2/b/o/l-ts-light-carrot-rcb-grey-black-shoulder-cuff-combo-full-original-imagwchrzrfz7phq.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+              
+          </div>
+          </marquee>
+      </div>
+        
+
+    
+    
+    
+    
+  <div id="mid" >
+      <a href="" class="td">
+        <div class ="div1" style="background-image: url('{% static 'myapp/images/category-2.jpg'%}');">
+          <h4 class="ih">Clothes Sales</h4>
+          <h4 class="ih">shop new season clothes</h4>
+        </div>>
+      </a>
+
+      <a href="{ % url 'smart_casuals' % }" class="td">
+        <div class="div2" style="background-image: url('{% static 'myapp/images/category-1.jpg' %}');">
+         <h4 class="ih">smart causals</h4>
+         <h4 class="ih">Get Wide Range Collections</h4>
+        </div>
+         
+      </a>
+
+      <a href="{ % url 'jewellary' % }" class="td">
+        <div class="div3" style="background-image: url('{% static 'myapp/images/category-3.jpg' %}');">
+          <h4 class="ih">jewellary</h4>
+          <h4 class="ih">Special Design Comes First</h4>
+        </div>
+      </a>
+    </div>
+    <br><br>
+    <br><br><br>
+    <div id="ps">
+      <h5 style="text-decoration: underline;">POPULAR SEARCHES</h5>
+      <p>Makeup | Dresses For Girls | T-Shirts | Sandals | Headphones | Babydolls | Blazers For Men | Handbags  Ladies Watches | Bags | Sport Shoes | Reebok Shoes | Puma Shoes | Boxers | Wallets | Tops  Earrings | Fastrack Watches | Kurtis | Nike | Smart Watches | Titan Watches | Designer Blouse | Gowns  Rings | Cricket Shoes | Forever 21 | Eye Makeup|  Photo Frames | Punjabi Suits | Bikini | Fashion Show | Lipstick | Saree | Watches | Dresses | Lehenga | Nike Shoes | Goggles | Bras | Suit | Chinos  Shoes | Adidas Shoes | Woodland Shoes | Jewellery | Designers Sarees</p>
+     
+    </div>
+    <br>
+    <div id="search">
+      <h1 class="si">SUBSCRIBE TO NEWSLETTER</h1>
+      <p class="si">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem hic quam eaque similique dignissimos <br> in tenetur libero ipsum unde, sit et nisi culpa ut quibusdam ipsa! Atque nulla reiciendis explicabo?</p>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+        
+      
+    </div>
+    <br>
+    <div class="search">
+      <div>
+        <a href="https://www.facebook.com/"><img src="https://tse1.mm.bing.net/th?id=OIP.-NlF9-lDk4zCh-JTA4JaiAHaHa&pid=Api&P=0&h=180" alt="" class="fitp"></a>
+        <a href="https://www.instagram.com/"><img src="https://tse4.mm.bing.net/th?id=OIP.JtmXSh_uyZBaTg1eXd-NtgHaHa&pid=Api&P=0&h=180" alt="" class="fitp"></a>
+        <a href="https://twitter.com/"><img src="https://tse1.mm.bing.net/th?id=OIP.48orH8P6Hm-yujWPqSbjeAHaHe&pid=Api&P=0&h=180" alt="" class="fitp"></a>
+        <a href="https://www.pinterest.com/ideas/"><img src="https://tse4.mm.bing.net/th?id=OIP.V5RoSjcG3SmfjaGnf8MyFwHaHa&pid=Api&P=0&h=180" alt="" class="fitp"></a>
+      </div>
+      <div id="foot2">
+        <a href="./contact.html"><h4>Contact</h4></a>
+        <a href=""><h4>Shop</h4></a>
+        <a href=""><h4>Pricing</h4></a>
+        <a href=""><h4>Privacy Policy</h4></a>
+      </div>
+      <div>
+        <p id="copy">Copyright ©2021, Designed & Developed by Themefisher</p>
+      </div>
+    </div>
+
+  
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

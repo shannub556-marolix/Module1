@@ -1,0 +1,74 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'blog.css' %}">
+    <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+</head>
+<body>
+   <marquee behavior="" direction="right" Scrollamount="5"><h1 class="avi_h1">SKR Fashion</h1></marquee>
+   <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">SKR FASHIONS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'myapp:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'myapp:about' %}">about</a>
+          </li>
+          
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+   <div class="avi_div1">
+    <h1 class="avi_div_1">blog</h1>
+    <div class="div11">
+        <a href="">home</a>
+        <span>/</span>
+        <span>blog</span>
+    </div>
+   </div>
+   <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="img1" style="width: 500px;">
+   <div class="avi_div_2">
+       <a href="">How To Do Shopping</a>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti nostrum blanditiis rem rerum quia suscipit accusamus provident assumenda perspiciatis, nulla, dignissimos nisi laboriosam soluta? Harum maxime facilis nulla Lorem ipsum dolor sit amet, consectetur dolor sunil sravan gowtham gopi irfan maxine nulla lorem sit</p>
+        <button class="button">continue download</button>
+        <hr>
+    </div>
+   <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1955&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="img1" id="img" style="width: 500px;">
+   <div class="avi_div_2">
+      <a href=""> Making A Denim Statement</a>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti nostrum blanditiis rem rerum quia suscipit accusamus provident assumenda perspiciatis, nulla, dignissimos nisi laboriosam soluta? Harum maxime facilis nulla Lorem ipsum dolor sit amet, consectetur dolor sunil sravan gowtham gopi irfan maxine nulla lorem sit</p>
+       <button class="button">continue download</button>
+       <hr>
+    </div>
+    <img src="https://images.unsplash.com/photo-1613987876445-fcb353cd8e27?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="img1" style="width: 500px;">
+    <div class="avi_div_2">
+        <a href=""> How To Wear Bright Shoes</a>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti nostrum blanditiis rem rerum quia suscipit accusamus provident assumenda perspiciatis, nulla, dignissimos nisi laboriosam soluta? Harum maxime facilis nulla Lorem ipsum dolor sit amet, consectetur dolor sunil sravan gowtham gopi irfan maxine nulla lorem sit</p>
+        <button class="button">continue download</button>
+        <hr>
+    </div>
+    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFnfGVufDB8fDB8fHww" alt="" class="img1">
+    <div class="avi_div_2" id="avi_div">
+        <a href="">Standard Text Post</a>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti nostrum blanditiis rem rerum quia suscipit accusamus provident assumenda perspiciatis, nulla, dignissimos nisi laboriosam soluta? Harum maxime facilis nulla Lorem ipsum dolor sit amet, consectetur dolor sunil sravan gowtham gopi irfan maxine nulla lorem sit</p>
+        <button class="button">continue download</button>
+        <hr>
+    </div>
+
+</body>
+</html>

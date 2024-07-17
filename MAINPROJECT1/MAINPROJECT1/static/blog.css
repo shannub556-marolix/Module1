@@ -1,0 +1,72 @@
+.avi_h1{
+    font-size: 35px;
+    text-align: center;
+    color: black;
+}
+
+.avi_div1{
+    height:120px;
+    background-color:whitesmoke;
+}
+
+.avi_div_1{
+    font-size: 35px;
+    text-transform: capitalize;
+    color: black;
+    margin-left: 150px;
+    padding-top: 30px;
+    margin-top: 150px;;
+}
+.div11 a{
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+}
+.div11{
+    padding-left: 150px;
+    margin-top: -20px;
+}
+
+.img1{
+    margin-left: 210px;
+    margin-top: 100px;;
+}
+
+.button{
+    background-color: black;
+    color: white;
+    width:150px;
+    border: none;
+    font-size: 15px;
+    height:30px;
+    cursor: pointer;
+    margin-left: 230px;
+    text-transform: capitalize;
+    
+}
+.avi_div_2 a{
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    font-size: 30px;
+    padding-left: 230px;
+    position: relative;
+    top:20px;
+}
+.avi_div_2 p{
+    padding-left: 230px;
+    width:1050px;
+    padding-top: 20px;
+    
+}
+hr{
+    margin-left: 230px;
+    margin-top: 20px;
+    margin-right: 170px;
+}
+#img{
+    margin-top:50px;
+}
+#imgs{
+    margin: 50px;
+}

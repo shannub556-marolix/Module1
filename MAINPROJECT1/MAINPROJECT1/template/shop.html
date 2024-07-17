@@ -1,0 +1,250 @@
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'shop.css' %}">
+</head>
+<body>
+    <div>
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+               <img src="https://as2.ftcdn.net/v2/jpg/04/47/30/89/1000_F_447308993_j0GKjpTq7fle7wwNmcuxotw9WVkqMaVi.jpg" alt="Logo" width="250" height="150" class="d-inline-block align-text-top">
+               <h1 id="skr">SKR Fashions</h1>
+              </a>
+            </div>
+        </nav>
+    </div>
+    <br>
+    <div class="main1">
+        <button class="button"><a href="{% url 'myapp:home' %}" class="btn ">Home</a></button>
+        <button class="button"><a href="{% url 'myapp:mens' %}" class="btn">Mens</a></button>
+        <button class="button"><a href="{% url 'myapp:women' %}" class="btn">Womans</a></button>
+        <button class="button"><a href="" class="btn">Childrens</a></button>
+    </div>
+    <br>
+    <div>
+        <h1 class="main">Mens Fashions</h1>
+        <br>
+        <div class="cart">
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/x/l/d/s-st28-vebnor-original-imagq6aqgh2hzv22.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Men Regular Fit Checkered Spread Collar Casual Shirt</h5>
+                  <p class="card-text"><h4>₹299</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/x/u/h/m-st2-vebnor-original-imagpw7w3ha4tv2h.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Men Regular Fit Solid Spread Collar Casual Shirt</h5>
+                  <p class="card-text"><h4>₹299</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/x/f/n/-original-imagy3k8ddhgyuzk.jpeg?q=70" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Pack of 2 Solid Sleeveless Hooded Neck Black</h5>
+                  <p class="card-text"><h4>₹299</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/2/b/o/l-ts-light-carrot-rcb-grey-black-shoulder-cuff-combo-full-original-imagwchrzrfz7phq.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Printed Round Neck Pure Cotton Multicolor T-Shirt</h5>
+                  <p class="card-text"><h4>₹470</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="cart">
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/klscivk0/trouser/q/q/k/28-sktr-4242-olv-fubar-original-imagyuff8uq6cxny.jpeg?q=70&crop=false " class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Men Slim Fit Light Green Cotton Blend Trousers</h5>
+                  <p class="card-text"><h4>₹479</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/jean/u/e/o/30-g2-mj-gr-103-comfits-original-imagrquh8vqz9znc.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Men Slim Mid Rise Dark Grey Jeans</h5>
+                  <p class="card-text"><h4>₹379</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/jean/l/u/m/32-heartbeatneecut-creatiwity-original-imagyevuemzuhmqm.jpeg?q=70" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Men Slim Mid Rise Black Jeans</h5>
+                  <p class="card-text"><h4>₹455</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/jean/b/e/c/40-eps-grey-urbano-fashion-original-imags57tkuhsprhn.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Men Slim Mid Rise Grey Jeans</h5>
+                  <p class="card-text"><h4>₹598</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="cart">
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/kzn17680/short/6/q/u/xxl-damfsht-damensch-original-imagbhzctszafzm5.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Solid Men Green Chino Shorts</h5>
+                  <p class="card-text"><h4>₹1,493</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/short/p/r/v/xl-cut01-vitaan-original-imag9yy2yxpqenh4-bb.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Solid Men Black Sports Shorts</h5>
+                  <p class="card-text"><h4>₹181</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/boxer/w/n/y/s-xybox97-xyxx-original-imagpffeky6uhzhx.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Solid Men Green Sports Shorts</h5>
+                  <p class="card-text"><h4>₹445</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/short/t/d/p/xl-swi-bt-304-apraa-parma-original-imagxc4azgmgze7h.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Printed Men Black Sports Shorts</h5>
+                  <p class="card-text"><h4>₹399</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div>
+        <h1 class="main">WOMENS FASHIONS</h1>
+        <br>
+        <div class="cart">
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/dress/c/z/c/m-1125-dl-fashion-original-imagyt67ejdyythp.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Women Fit and Flare Multicolor, Black Dress</h5>
+                  <p class="card-text"><h4>₹474</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/kgwld3k0/dress/c/h/4/s-ttj6005471-tokyo-talkies-original-imafxfh6js5pstgq.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Women A-line Brown Dress</h5>
+                  <p class="card-text"><h4>₹486</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/l2arp8w0/dress/j/x/q/xl-sfdrss10603-sassafras-original-imagdzcwkgsbdksy.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Women Fit and Flare Red Dress</h5>
+                  <p class="card-text"><h4>₹849</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/kvzkosw0/dress/k/2/n/xl-ttj6005911-tokyo-talkies-original-imag8rcvukhyp6mh.jpeg?q=70&crop=false  " class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Women Skater Multicolor Dress</h5>
+                  <p class="card-text"><h4>₹379</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        br
+        <div class="cart">
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/shirt/m/3/d/m-234-j-turritopsis-original-imagnfwnhyjnvs6f.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Regular Fit Printed Lapel Collar Casual Shirt</h5>
+                  <p class="card-text"><h4>₹299</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/l4u7vrk0/t-shirt/j/u/9/l-focus-adyavastram-original-imagfnk7vxjfggwp.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Women Round Neck Cotton Blend Purple T-Shirt</h5>
+                  <p class="card-text"><h4>₹242</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/top/l/3/b/xxl-4465-sheetal-associates-original-imagzzywyuzkadwh.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Casual Regular Sleeves Printed Women Black Top</h5>
+                  <p class="card-text"><h4>₹249</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/e/f/k/3xl-wmn-2cmbo-546-358-christy-world-original-imagy6y7zamzzyuh.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Pack of 2 Women Printed Round Neck </h5>
+                  <p class="card-text"><h4>₹494</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="cart">
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/sari/f/m/v/free-nc161-white-copper-topjec-unstitched-original-imagyzys6tgdgn2k.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Woven Bollywood Jacquard, Pure Silk Saree </h5>
+                  <p class="card-text"><h4>₹359</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/sari/l/f/t/free-37472-mirchi-fashion-unstitched-original-imaghgdwqhskzzun.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Printed, Floral Print Daily Wear Chiffon Saree</h5>
+                  <p class="card-text"><h4>₹439</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/kxtaxzk0/shopsy-sari/d/s/j/free-lnb-fabian-fashion-unstitched-original-imaga6mvtkskmess.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Floral Print, Digital Print Bollywood Satin Saree</h5>
+                  <p class="card-text"><h4>₹499</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/sari/0/5/f/free-nc166-green-topjec-unstitched-original-imagsc2qudex6gw6.jpeg?q=70&crop=false" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Woven Bollywood Jacquard, Pure Silk Saree</h5>
+                  <p class="card-text"><h4>₹339</h4></p>
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
